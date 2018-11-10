@@ -1,7 +1,10 @@
 package main
 
-import "fmt"
+import (
+  "fmt"
+  "github.com/cadams8238/stringutil"
+)
 
 func main() {
-  fmt.Println("Hello, world.")
+  fmt.Println(stringutil.Reverse("!oG, olleH"))
 }
