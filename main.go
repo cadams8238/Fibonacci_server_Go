@@ -46,6 +46,11 @@ func FibonacciHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Para
 		return
 	}
 
+	if num > 93 {
+		http.Error(w, "Sequences greater than 93 are not allowed. (unit64 overflow)", http.StatusInternalServerError)
+		return
+	}
+
 	fib, err := json.Marshal(fibonacciSeq(num))
 
 	if err != nil {
