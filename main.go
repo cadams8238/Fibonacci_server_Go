@@ -39,6 +39,7 @@ func fibonacciSeq(num int) []uint64 {
 }
 
 func FibonacciHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	enableCors(&w)
 	num, err := strconv.Atoi(ps.ByName("num"))
 
 	if err != nil {
@@ -59,6 +60,10 @@ func FibonacciHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Para
 
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(fib)
+}
+
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
 }
 
 func main() {
